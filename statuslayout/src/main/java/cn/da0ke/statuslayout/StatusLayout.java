@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
  *
  */
 
-public class EmptyLayout extends LinearLayout {
+public class StatusLayout extends LinearLayout {
     //空数据页面
     private ViewGroup mEmptyView;
     //加载中页面
@@ -38,24 +38,24 @@ public class EmptyLayout extends LinearLayout {
     //加载中遮罩
     private ViewGroup mProgressView;
 
-    public EmptyLayout(Context context) {
+    public StatusLayout(Context context) {
         super(context);
         init();
     }
 
-    public EmptyLayout(Context context, AttributeSet attrs) {
+    public StatusLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public EmptyLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public StatusLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public EmptyLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public StatusLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
     }
