@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">StatusLayout</string>
+    <string name="layout_empty_tip">暂无数据</string>
+    <string name="layout_error_tip">网络出错了，请点击重试</string>
+</resources>
