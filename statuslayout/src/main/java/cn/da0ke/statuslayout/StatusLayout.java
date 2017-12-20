@@ -63,10 +63,10 @@ public class StatusLayout extends LinearLayout {
     private void init() {
         LayoutInflater mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if(mInflater != null) {
-            mEmptyView = (ViewGroup) mInflater.inflate(R.layout.emptylayout_layout_empty,this);
-            mLoadingView = (ViewGroup) mInflater.inflate(R.layout.emptylayout_layout_loading,this);
-            mErrorView = (ViewGroup) mInflater.inflate(R.layout.emptylayout_layout_error,this);
-            mProgressView = (ViewGroup) mInflater.inflate(R.layout.emptylayout_layout_progress,this);
+            mEmptyView = (ViewGroup) mInflater.inflate(R.layout.emptylayout_layout_empty,this,false);
+            mLoadingView = (ViewGroup) mInflater.inflate(R.layout.emptylayout_layout_loading,this,false);
+            mErrorView = (ViewGroup) mInflater.inflate(R.layout.emptylayout_layout_error,this,false);
+            mProgressView = (ViewGroup) mInflater.inflate(R.layout.emptylayout_layout_progress,this,false);
 
             LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             mEmptyView.setLayoutParams(layoutParams);
