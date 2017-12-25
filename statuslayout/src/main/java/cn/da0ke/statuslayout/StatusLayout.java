@@ -3,11 +3,15 @@ package cn.da0ke.statuslayout;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Method;
 
@@ -83,12 +87,23 @@ public class StatusLayout extends LinearLayout {
         }
     }
 
-    public void showEmpty() {
+    public void showEmpty(String msg) {
+        TextView _msg = mEmptyView.findViewById(R.id.statuslayout_empty_msg);
+
+        if(!TextUtils.isEmpty(msg)) {
+            _msg.setText(msg);
+        } else {
+            _msg.setText(getResources().getString(R.string.layout_empty_tip));
+        }
         this.setVisibility(VISIBLE);
         mEmptyView.setVisibility(VISIBLE);
         mLoadingView.setVisibility(GONE);
         mErrorView.setVisibility(GONE);
         mProgressView.setVisibility(GONE);
+    }
+
+    public void showEmpty() {
+        showEmpty("");
     }
 
     public void showLoading() {

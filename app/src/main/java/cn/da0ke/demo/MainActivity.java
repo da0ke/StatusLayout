@@ -57,8 +57,18 @@ public class MainActivity extends AppCompatActivity {
                 hide();
             }
         });
+
+        findViewById(R.id.msg).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customEmpty();
+            }
+        });
     }
 
+    private void customEmpty() {
+        statusLayout.showEmpty("自定义文字");
+    }
 
     /**
      * show loading view

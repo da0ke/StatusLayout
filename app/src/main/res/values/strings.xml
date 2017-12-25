@@ -5,4 +5,5 @@
     <string name="demo_empty">empty</string>
     <string name="demo_progress">progress</string>
     <string name="demo_hide">hide</string>
+    <string name="demo_msg">msg</string>
 </resources>
