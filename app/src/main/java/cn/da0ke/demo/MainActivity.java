@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import cn.da0ke.statuslayout.ErrorClickListener;
 import cn.da0ke.statuslayout.StatusLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -89,7 +90,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private void error() {
         statusLayout.showError();
-        statusLayout.errorClick(this,"dataTask");
+        statusLayout.setOnErrorClickListener(new ErrorClickListener() {
+            @Override
+            public void errorClick() {
+                dataTask();
+            }
+        });
     }
 
     /**
@@ -107,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void dataTask() {
-        Toast.makeText(this,"error click",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"dataTask()",Toast.LENGTH_SHORT).show();
     }
+
+
 }
