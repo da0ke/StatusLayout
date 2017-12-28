@@ -11,25 +11,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.lang.reflect.Method;
 
 /**
  * Created by da0ke on 2017/11/9
- *
- * 使用方法：
- * 1.布局文件中在合适的地方加入EmptyLayout，通常放在FrameLayout下
- * 2.获取EmptyLayout对象
- *      EmptyLayout emptyLayout = findViewById(R.id.emptyLayout);
- * 3.使用EmptyLayout方法
- *      emptyLayout.showProgress();
- *      emptyLayout.showLoading();
- *      emptyLayout.showEmpty();
- *      emptyLayout.showError();
- *      emptyLayout.errorClick(this,"initData");
- *      emtpyLayout.hide();
- *
  */
 
 public class StatusLayout extends LinearLayout {
@@ -134,22 +119,34 @@ public class StatusLayout extends LinearLayout {
         this.setVisibility(GONE);
     }
 
-    public void errorClick(final Object base, final String method, final Object... parameters) {
+    /**
+     *
+     * 废弃原因：
+     * 1.方法名无法在编译期间进行名称检查
+     * 2.dataTask(int sType)，反编译结果为dataTask(Integer sType)，抛出NoSuchMethodException
+     *
+     */
+    @Deprecated
+    public void errorClick(final Object base, final String method) {
         mErrorView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                int length = parameters.length;
-                Class<?>[] paramsTypes = new Class<?>[length];
-                for (int i = 0; i < length; i++) {
-                    paramsTypes[i] = parameters[i].getClass();
-                }
                 try {
-                    Method m = base.getClass().getDeclaredMethod(method, paramsTypes);
+                    Method m = base.getClass().getDeclaredMethod(method);
                     m.setAccessible(true);
-                    m.invoke(base, parameters);
+                    m.invoke(base);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+    }
+
+    public void setOnErrorClickListener(final ErrorClickListener callBack) {
+        mErrorView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callBack.errorClick();
             }
         });
     }
