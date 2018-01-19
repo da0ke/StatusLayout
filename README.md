@@ -29,6 +29,10 @@ implementation 'com.github.da0ke:StatusLayout:1.1.0'
 StatusLayout statusLayout = findViewById(R.id.statusLayout);
 
 
+private void customEmpty() {
+    statusLayout.showEmpty("自定义文字");
+}
+
 /**
  * show loading view
  */
@@ -48,13 +52,18 @@ private void empty() {
  */
 private void error() {
     statusLayout.showError();
-    statusLayout.errorClick(this,"dataTask");
+    statusLayout.setOnErrorClickListener(new ErrorClickListener() {
+        @Override
+        public void errorClick() {
+            dataTask();
+        }
+    });
 }
 
 /**
  * show progress view
  */
- private void progress() {
+private void progress() {
     statusLayout.showProgress();
 }
 
@@ -66,6 +75,6 @@ private void hide() {
 }
 
 private void dataTask() {
-    Toast.makeText(this,"error click",Toast.LENGTH_LONG).show();
+    Toast.makeText(this,"dataTask()",Toast.LENGTH_SHORT).show();
 }
 ```
