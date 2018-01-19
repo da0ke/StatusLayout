@@ -5,7 +5,7 @@ show loading or empty or error or progress view for android
 maven { url 'https://jitpack.io' }
 ```
 ```
-implementation 'com.github.da0ke:StatusLayout:1.1.0'
+implementation 'com.github.da0ke:StatusLayout:latest.version'
 ```
 
 ```
@@ -52,9 +52,9 @@ private void empty() {
  */
 private void error() {
     statusLayout.showError();
-    statusLayout.setOnErrorClickListener(new ErrorClickListener() {
+    statusLayout.setOnErrorClickListener(new OnErrorClickListener() {
         @Override
-        public void errorClick() {
+        public void OnErrorClick() {
             dataTask();
         }
     });
