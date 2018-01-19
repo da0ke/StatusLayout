@@ -68,6 +68,10 @@ public class StatusLayout extends LinearLayout {
             this.addView(mErrorView);
             this.addView(mProgressView);
 
+            //阻止下层视图事件穿透
+            this.setClickable(true);
+            this.setFocusable(true);
+
             showLoading();
         }
     }
@@ -142,11 +146,27 @@ public class StatusLayout extends LinearLayout {
         });
     }
 
+    /**
+     * 废弃原因：
+     * 1.名称ErrorClickListener，希望改成OnErrorClickListener
+     * 2.errorClick()，希望改成onErrorClick()
+     * @param callBack 回调
+     */
+    @Deprecated
     public void setOnErrorClickListener(final ErrorClickListener callBack) {
         mErrorView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 callBack.errorClick();
+            }
+        });
+    }
+
+    public void setOnErrorClickListener(final OnErrorClickListener callBack) {
+        mErrorView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callBack.onErrorClick();
             }
         });
     }

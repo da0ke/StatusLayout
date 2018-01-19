@@ -1,11 +1,12 @@
 package cn.da0ke.demo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.da0ke.statuslayout.ErrorClickListener;
+import cn.da0ke.statuslayout.OnErrorClickListener;
 import cn.da0ke.statuslayout.StatusLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +22,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+        TextView contentView = findViewById(R.id.contentView);
+        contentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"click contentView",Toast.LENGTH_SHORT).show();
+            }
+        });
+
         statusLayout = findViewById(R.id.statusLayout);
+
         statusLayout.hide();
 
         findViewById(R.id.loading).setOnClickListener(new View.OnClickListener() {
@@ -90,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private void error() {
         statusLayout.showError();
-        statusLayout.setOnErrorClickListener(new ErrorClickListener() {
+        statusLayout.setOnErrorClickListener(new OnErrorClickListener() {
             @Override
-            public void errorClick() {
+            public void onErrorClick() {
                 dataTask();
             }
         });

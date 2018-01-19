@@ -91,19 +91,20 @@
 
     </LinearLayout>
 
-   <FrameLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
+            android:id="@+id/contentView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Hello World!"/>
-
         <cn.da0ke.statuslayout.StatusLayout
             android:id="@+id/statusLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </FrameLayout>
+
 
 </LinearLayout>
